@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syed Denish Ahmed - Graphics Designer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -17,36 +18,176 @@
         }
 
         header {
-            background: linear-gradient(to right, #006699, #00ccff);
+            background-color: #333;
             color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #00ccff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #00ccff;
+        }
+
+        header nav ul li a:hover::before {
+            transform: scaleX(1);
+        }
+
+        main {
+            padding-top: 80px;
+        }
+
+        section {
             padding: 80px 20px;
             text-align: center;
         }
 
-        nav {
-            background-color: #333;
-            padding: 10px;
-            text-align: center;
+        section h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #006699;
         }
 
-        nav a {
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 200px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .btn {
+            display: inline-block;
+            background-color: #00ccff;
             color: #fff;
             text-decoration: none;
             padding: 10px 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: #555;
-        }
-
-        section {
-            margin: 40px auto;
-            max-width: 800px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .btn:hover {
+            background-color: #006699;
+        }
+
+        .portfolio-item {
+            display: inline-block;
+            margin: 20px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item img {
+            max-width: 300px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .portfolio-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 102, 153, 0.8);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h3 {
+            font-size: 24px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         footer {
@@ -56,81 +197,115 @@
             text-align: center;
         }
 
-        .hero h1 {
-            font-size: 48px;
-            margin: 0;
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #006699;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .hero p {
-            font-size: 24px;
-            margin: 10px 0 0;
+        .back-to-top:hover {
+            background-color: #00ccff;
         }
 
-        .portfolio-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .portfolio-item img {
-            max-width: 200px;
-            margin-right: 20px;
-            border-radius: 5px;
-        }
-
-        .social-icons {
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: #333;
-            font-size: 24px;
-            margin-right: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: #006699;
+        .back-to-top.show {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <header class="hero">
-        <h1>Syed Denish Ahmed</h1>
-        <p>Graphics Designer</p>
+    <header>
+        <a href="#" class="logo">Syed Denish Ahmed</a>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <section id="about">
-        <h2>About</h2>
-        <p>I am a graphics designer with 5 years of experience in creating stunning visual designs for various clients and projects.</p>
-    </section>
-    <section id="portfolio">
-        <h2>Portfolio</h2>
-        <div class="portfolio-item">
-            <img src="https://via.placeholder.com/200" alt="Portfolio Item 1">
-            <div>
-                <h3>Project Title</h3>
-                <p>Brief description of the project.</p>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="content">
+                <h1>Crafting Visual Masterpieces</h1>
+                <p>Experience the power of design with my creative solutions.</p>
+                <a href="#portfolio" class="btn">View Portfolio</a>
             </div>
-        </div>
-        <!-- Add more portfolio items here -->
-    </section>
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:syeddenish33@gmail.com">syeddenish33@gmail.com</a></p>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </section>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a passionate graphics designer with 5 years of experience in creating stunning visual designs for various clients and projects. With a keen eye for detail and a deep understanding of design principles, I strive to create visually captivating and effective designs that resonate with your target audience.</p>
+        </section>
+
+        <section id="services">
+            <h2>Services</h2>
+            <div class="service-item">
+                <i class="fas fa-palette fa-3x"></i>
+                <h3>Branding & Identity</h3>
+                <p>Crafting unique and memorable brand identities, including logos, color schemes, and visual styles.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-newspaper fa-3x"></i>
+                <h3>Print Design</h3>
+                <p>Designing eye-catching print materials such as brochures, flyers, posters, and catalogs.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-desktop fa-3x"></i>
+                <h3>Web Design</h3>
+                <p>Creating visually appealing and user-friendly website designs with a focus on responsive layouts.</p>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <div class="portfolio-item">
+                <a href="https://via.placeholder.com/800x600" data-lightbox="portfolio" data-title="Project Title">
+                    <img src="https://via.placeholder.com/300" alt="Portfolio Item 1">
+                    <div class="overlay">
+                        <h3>Project Title</h3>
+                    </div>
+                </a>
+            </div>
+            <!-- Add more portfolio items here -->
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:syeddenish33@gmail.com">syeddenish33@gmail.com</a></p>
+            <p>Phone: +1 123-456-7890</p>
+            <p>Address: 123 Main Street, City, State, Country</p>
+        </section>
+    </main>
+
     <footer>
         <p>&copy; Syed Denish Ahmed</p>
     </footer>
+
+    <a href="#" class="back-to-top" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            var backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 100) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>
