@@ -9,7 +9,92 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-        body {
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease; /* Add transition for smooth background change */
+    }
+
+    header.sticky { /* Styles applied when header sticks to top on scroll */
+      background-color: rgba(33, 33, 33, 0.8); /* Semi-transparent background */
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    header.sticky .logo { /* Change logo color on scroll */
+      color: #00ccff;
+    }
+
+    /* Navigation bar styles */
+    header nav {
+      display: flex;
+      flex-grow: 1; /* Make navigation bar grow to fill remaining space */
+    }
+
+    header nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-around; /* Space navigation links evenly */
+    }
+
+    header nav ul li {
+      margin: 0; /* Remove margin between list items */
+    }
+
+    header nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      transition: color 0.3s ease;
+    }
+
+    header nav ul li a:hover {
+      color: #00ccff;
+    }
+
+    main {
+      padding-top: 80px;
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #006699;
+    }      
+
+	{
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
@@ -65,7 +150,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background-color: #00ccff;
+            background-color: transparent;
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -271,18 +356,19 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">Syed Denish Ahmed</a>
-        <nav>
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <a href="#" class="logo">Syed Denish Ahmed</a>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
 
     <main>
         <section class="hero" id="hero">
@@ -352,6 +438,18 @@
 
     <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
     <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Show back to top button
         window.addEventListener('scroll', function() {
             var backToTop = document.querySelector('.back-to-top');
             if (window.pageYOffset > 100) {
@@ -363,3 +461,4 @@
     </script>
 </body>
 </html>
+
