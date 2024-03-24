@@ -118,18 +118,21 @@
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            color: #333;
         }
 
         .hero h1 {
             font-size: 48px;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
             font-size: 24px;
             margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero .btn {
@@ -218,6 +221,53 @@
         .back-to-top.show {
             opacity: 1;
         }
+
+        .service-item {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-item i {
+            color: #006699;
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .service-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .text-placeholder {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .text-placeholder p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -245,7 +295,9 @@
 
         <section id="about">
             <h2>About Me</h2>
-            <p>I am a passionate graphics designer with 5 years of experience in creating stunning visual designs for various clients and projects. With a keen eye for detail and a deep understanding of design principles, I strive to create visually captivating and effective designs that resonate with your target audience.</p>
+            <div class="text-placeholder">
+                <p>I am a passionate graphics designer with 5 years of experience in creating stunning visual designs for various clients and projects. With a keen eye for detail and a deep understanding of design principles, I strive to create visually captivating and effective designs that resonate with your target audience.</p>
+            </div>
         </section>
 
         <section id="services">
@@ -282,9 +334,11 @@
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>Email: <a href="mailto:syeddenish33@gmail.com">syeddenish33@gmail.com</a></p>
-            <p>Phone: +1 123-456-7890</p>
-            <p>Address: 123 Main Street, City, State, Country</p>
+            <div class="text-placeholder">
+                <p>Email: <a href="mailto:syeddenish33@gmail.com">syeddenish33@gmail.com</a></p>
+                <p>Phone: +1 123-456-7890</p>
+                <p>Address: 123 Main Street, City, State, Country</p>
+            </div>
         </section>
     </main>
 
